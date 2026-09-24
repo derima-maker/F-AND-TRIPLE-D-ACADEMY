@@ -557,7 +557,7 @@
 <div class="app-container">
     <header>
         <div class="header-brand">
-            <img src="https://dl.dropboxusercontent.com/scl/fi/1ob0p5n7l6hyh4td3r0im/grok_1789571969699.jpg?rlkey=lquykzm9jj1czznynun4tfu15&dl=1" 
+            <img src="https://dl.dropboxusercontent.com/scl/fi/rdej9enx2pnsktjjuviv4/1790280398985.jpg?rlkey=12t90yeb0o50yqfz5ndqomxz3&st=59kxo5d7&dl=1" 
                  alt="F AND TRIPLE D ACADEMY Logo" 
                  class="header-logo"
                  onclick="openLightbox(this.src, 'F AND TRIPLE D ACADEMY')"
@@ -608,7 +608,7 @@
             </div>
         </section>
 
-        <!-- EVENTS (Sub-nav reordered: Hairstyles → Roaster → Calendar → Words) -->
+        <!-- EVENTS -->
         <section id="events" class="view">
             <div class="sub-nav">
                 <button class="sub-nav-item active" onclick="switchSubTab('hairstyles', this)">Hairstyles</button>
@@ -617,7 +617,6 @@
                 <button class="sub-nav-item" onclick="switchSubTab('words', this)">Words of the Week</button>
             </div>
 
-            <!-- Sub View: Hairstyles (default active) -->
             <div id="hairstylesView" class="sub-view active">
                 <div class="card">
                     <h3>Hairstyles for the Week</h3>
@@ -630,7 +629,6 @@
                 </div>
             </div>
 
-            <!-- Sub View: Roaster -->
             <div id="roasterView" class="sub-view">
                 <div class="card">
                     <h3>Staff Duty Roaster</h3>
@@ -643,7 +641,6 @@
                 </div>
             </div>
 
-            <!-- Sub View: Calendar -->
             <div id="calendarView" class="sub-view">
                 <div class="card">
                     <div class="calendar-header">
@@ -661,7 +658,6 @@
                 </div>
             </div>
 
-            <!-- Sub View: Words -->
             <div id="wordsView" class="sub-view">
                 <div class="card">
                     <h3>Words of the Week</h3>
@@ -678,7 +674,7 @@
         <!-- ABOUT -->
         <section id="about" class="view">
             <div class="card">
-                <img src="https://dl.dropboxusercontent.com/scl/fi/1ob0p5n7l6hyh4td3r0im/grok_1789571969699.jpg?rlkey=lquykzm9jj1czznynun4tfu15&dl=1" 
+                <img src="https://dl.dropboxusercontent.com/scl/fi/rdej9enx2pnsktjjuviv4/1790280398985.jpg?rlkey=12t90yeb0o50yqfz5ndqomxz3&st=59kxo5d7&dl=1" 
                      alt="School Logo" class="avatar"
                      style="width:120px;height:120px;display:block;margin:0 auto 16px;"
                      onclick="openLightbox(this.src, 'F AND TRIPLE D ACADEMY')"
@@ -752,11 +748,11 @@
 const CONFIG = {
     schoolName: 'F AND TRIPLE D ACADEMY',
     whatsappNumber: '2348027093798',
-    schoolLogo: 'https://dl.dropboxusercontent.com/scl/fi/1ob0p5n7l6hyh4td3r0im/grok_1789571969699.jpg?rlkey=lquykzm9jj1czznynun4tfu15&dl=1',
+    schoolLogo: 'https://dl.dropboxusercontent.com/scl/fi/rdej9enx2pnsktjjuviv4/1790280398985.jpg?rlkey=12t90yeb0o50yqfz5ndqomxz3&st=59kxo5d7&dl=1',
     apiUrl: 'https://script.google.com/macros/s/AKfycbyKT3hPqkX-A0VSs7UMehi5wwAXyUtH3GvC-A4fe5Z8Dn8XVfd8Ra7fH3I9QcdE8YUoEw/exec',
     enablePullToRefresh: true,
     enablePushNotifications: true,
-    enablePostForm: false  // ← Disabled — a separate posting section will be built later
+    enablePostForm: false
 };
 
 /* ============================================================
@@ -917,7 +913,7 @@ let allData = { updates: [], calendar: [], words: [], hairstyles: [], roaster: [
 
 const CACHE_KEY = 'ftd_cache_data';
 const CACHE_TIME_KEY = 'ftd_cache_time';
-const CACHE_MAX_AGE = 1000 * 60 * 60 * 24 * 7; // 7 days
+const CACHE_MAX_AGE = 1000 * 60 * 60 * 24 * 7;
 
 function saveToCache(data) {
     try {
@@ -925,7 +921,6 @@ function saveToCache(data) {
         localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
     } catch (e) { console.warn('Cache save failed:', e); }
 }
-
 function loadFromCache() {
     try {
         const raw = localStorage.getItem(CACHE_KEY);
@@ -935,7 +930,6 @@ function loadFromCache() {
         return { data: JSON.parse(raw), timestamp: time };
     } catch (e) { return null; }
 }
-
 function formatCacheAge(timestamp) {
     const diff = Date.now() - timestamp;
     const mins = Math.floor(diff / 60000);
@@ -945,16 +939,8 @@ function formatCacheAge(timestamp) {
     if (hours < 24) return `${hours}h ago`;
     return `${Math.floor(hours / 24)}d ago`;
 }
-
-function showOfflineBanner() {
-    const el = document.getElementById('offlineBanner');
-    if (el) el.classList.add('visible');
-}
-function hideOfflineBanner() {
-    const el = document.getElementById('offlineBanner');
-    if (el) el.classList.remove('visible');
-}
-
+function showOfflineBanner() { const el = document.getElementById('offlineBanner'); if (el) el.classList.add('visible'); }
+function hideOfflineBanner() { const el = document.getElementById('offlineBanner'); if (el) el.classList.remove('visible'); }
 function showCacheInfo(timestamp) {
     let el = document.getElementById('cacheInfo');
     if (!el) {
@@ -968,17 +954,12 @@ function showCacheInfo(timestamp) {
     el.textContent = `📦 Showing saved updates from ${formatCacheAge(timestamp)}`;
     el.classList.add('visible');
 }
-function hideCacheInfo() {
-    const el = document.getElementById('cacheInfo');
-    if (el) el.classList.remove('visible');
-}
+function hideCacheInfo() { const el = document.getElementById('cacheInfo'); if (el) el.classList.remove('visible'); }
 
-/* ---- Main loader ---- */
 async function loadFeed(silent = false) {
     const container = document.getElementById('feedContainer');
     const cached = loadFromCache();
 
-    // Show cached data immediately
     if (cached && !silent) {
         allData = cached.data;
         renderEverything(cached.data);
@@ -987,23 +968,18 @@ async function loadFeed(silent = false) {
         showSkeletons();
     }
 
-    // Try fresh fetch
     try {
         const response = await fetch(CONFIG.apiUrl + '?t=' + Date.now(), { method: 'GET', cache: 'no-cache' });
         if (!response.ok) throw new Error('HTTP ' + response.status);
 
         const data = await response.json();
         allData = data;
-
         saveToCache(data);
         renderEverything(data);
-
         hideOfflineBanner();
         hideCacheInfo();
-
     } catch (err) {
         console.error('Feed fetch failed:', err);
-
         if (!cached) {
             container.innerHTML = `
                 <div class="error-feed">
@@ -1018,7 +994,6 @@ async function loadFeed(silent = false) {
     }
 }
 
-/* ---- Central render ---- */
 function renderEverything(data) {
     allPosts = (data.updates || []).map((row, i) => ({
         id: 'post-' + i,
@@ -1029,32 +1004,10 @@ function renderEverything(data) {
     filteredPosts = allPosts;
     renderPosts(filteredPosts);
     renderTables(data);
-
-    // Post form is disabled (enablePostForm: false), so this block does nothing.
-    // Kept here for future use when the separate admin posting section is built.
-    if (CONFIG.enablePostForm && !document.getElementById('postFormContainer')) {
-        const container = document.getElementById('feedContainer');
-        const formHtml = `
-            <div class="post-form" id="postFormContainer">
-                <h3>✍️ Post a New Update</h3>
-                <form onsubmit="submitPost(event)">
-                    <label for="postText">Message *</label>
-                    <textarea id="postText" placeholder="What's happening at school?" required></textarea>
-                    <label for="postImage1">Image URL 1 (optional)</label>
-                    <input type="url" id="postImage1" placeholder="https://...">
-                    <label for="postImage2">Image URL 2 (optional)</label>
-                    <input type="url" id="postImage2" placeholder="https://...">
-                    <button type="submit" id="postSubmitBtn">📤 Publish Update</button>
-                    <div class="form-status" id="formStatus"></div>
-                </form>
-            </div>
-        `;
-        container.insertAdjacentHTML('afterbegin', formHtml);
-    }
 }
 
 /* ============================================================
-   SUBMIT POST (kept for future use)
+   SUBMIT POST (kept for future admin section)
    ============================================================ */
 async function submitPost(event) {
     event.preventDefault();
@@ -1063,9 +1016,7 @@ async function submitPost(event) {
     const img1 = document.getElementById('postImage1').value.trim();
     const img2 = document.getElementById('postImage2').value.trim();
     if (!text) return;
-
     btn.disabled = true; btn.textContent = '⏳ Publishing...'; status.className = 'form-status'; status.style.display = 'none';
-
     try {
         const response = await fetch(CONFIG.apiUrl, {
             method: 'POST',
@@ -1088,7 +1039,6 @@ async function submitPost(event) {
    RENDER TABLES
    ============================================================ */
 function renderTables(data) {
-    // Hairstyles
     const hairBody = document.querySelector('#hairstylesTable tbody');
     if (hairBody) {
         if (!data.hairstyles || data.hairstyles.length === 0) {
@@ -1098,7 +1048,6 @@ function renderTables(data) {
         }
     }
 
-    // Roaster
     const roastBody = document.querySelector('#roasterTable tbody');
     if (roastBody) {
         if (!data.roaster || data.roaster.length === 0) {
@@ -1108,7 +1057,6 @@ function renderTables(data) {
         }
     }
 
-    // Calendar
     const calBody = document.querySelector('#calendarTable tbody');
     if (calBody) {
         if (!data.calendar || data.calendar.length === 0) {
@@ -1118,7 +1066,6 @@ function renderTables(data) {
         }
     }
 
-    // Words
     const wordBody = document.querySelector('#wordsTable tbody');
     if (wordBody) {
         if (!data.words || data.words.length === 0) {
@@ -1134,12 +1081,10 @@ function renderTables(data) {
    ============================================================ */
 function renderPosts(posts) {
     const container = document.getElementById('feedContainer');
-
     if (posts.length === 0) {
         container.innerHTML = `<div class="error-feed"><p>${searchTerm ? t('noResults') : t('noUpdates')}</p></div>`;
         return;
     }
-
     let html = '';
     posts.forEach((post, idx) => {
         const text = post.text || ''; const imgs = post.images || []; const shortCaption = text.substring(0, 60);
@@ -1151,7 +1096,6 @@ function renderPosts(posts) {
         }
         const waText = encodeURIComponent(`Hello, I'd like to comment on this update:\n\n"${text.substring(0, 100)}"\n\n`);
         const waLink = `https://wa.me/${CONFIG.whatsappNumber}?text=${waText}`;
-
         html += `
             <article class="post-card">
                 <div class="post-header">
@@ -1221,17 +1165,13 @@ if (CONFIG.enablePushNotifications) {
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
     applyLanguage();
-
     if (!navigator.onLine) showOfflineBanner();
-
     loadFeed();
-
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js').catch(err => console.log('SW skipped:', err.message));
     }
 });
 
-/* ---- Connectivity change handlers ---- */
 window.addEventListener('online', () => {
     console.log('Back online — refreshing feed');
     hideOfflineBanner();
