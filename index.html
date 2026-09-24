@@ -167,7 +167,6 @@
         .view.active.slide-right { animation: slideInRight 0.25s ease; }
         .view.active.slide-left { animation: slideInLeft 0.25s ease; }
 
-        /* --- SUB NAVIGATION (Events Tab) --- */
         .sub-nav {
             display: flex;
             gap: 8px;
@@ -200,7 +199,6 @@
         .sub-view { display: none; animation: fadeIn 0.2s ease; }
         .sub-view.active { display: block; }
 
-        /* --- DATA TABLES --- */
         .table-wrap {
             overflow-x: auto;
             border-radius: 10px;
@@ -240,7 +238,6 @@
         .calendar-header h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
         .calendar-header p { font-size: 0.75rem; color: var(--text-muted); }
 
-        /* --- SEARCH --- */
         .search-wrap { position: relative; margin-bottom: 14px; }
 
         .search-wrap input {
@@ -269,7 +266,6 @@
         }
         .search-wrap.has-value .clear-btn { display: block; }
 
-        /* --- PULL TO REFRESH --- */
         .ptr-indicator {
             text-align: center; height: 0; overflow: hidden;
             transition: height 0.25s ease; color: var(--text-muted); font-size: 0.8rem;
@@ -283,7 +279,6 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* --- SKELETON --- */
         .skeleton-card {
             background-color: var(--card-bg); border-radius: var(--radius);
             padding: 16px; margin-bottom: 14px; border: 1px solid var(--border-color);
@@ -300,7 +295,6 @@
         .skeleton-line.image { width: 100%; height: 180px; border-radius: 10px; margin-top: 8px; }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* --- POST CARDS --- */
         .post-card {
             background-color: var(--card-bg); border-radius: var(--radius);
             box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden;
@@ -359,7 +353,6 @@
         .post-actions button:hover { color: var(--accent-color); background-color: var(--accent-soft); }
         .post-actions button.liked { color: var(--accent-color); }
 
-        /* --- CARDS --- */
         .card {
             background-color: var(--card-bg); border-radius: var(--radius);
             padding: 18px; box-shadow: var(--shadow);
@@ -374,7 +367,6 @@
 
         .divider { height: 1px; background-color: var(--border-color); margin: 14px 0; }
 
-        /* --- PAYMENT STYLES --- */
         .bank-box {
             background-color: var(--input-bg); border-radius: var(--radius);
             padding: 16px; margin-top: 12px; border-left: 4px solid var(--accent-color);
@@ -396,7 +388,6 @@
             font-weight: 600; font-size: 0.9rem;
         }
 
-        /* --- STAFF --- */
         .staff-item {
             display: flex; align-items: center; gap: 12px;
             padding: 10px 0; border-bottom: 1px solid var(--border-color);
@@ -411,7 +402,6 @@
         .staff-info h4 { font-size: 0.9rem; font-weight: 600; }
         .staff-info p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
 
-        /* --- CONTACT --- */
         .contact-btn {
             display: flex; align-items: center; justify-content: center; gap: 8px;
             background-color: var(--input-bg); color: var(--text-main);
@@ -425,7 +415,6 @@
         .contact-btn.whatsapp { background-color: var(--wa); color: white; border: none; }
         .contact-btn.whatsapp:hover { background-color: #1ebe57; }
 
-        /* --- FAB --- */
         .fab {
             position: fixed; bottom: 84px; right: 18px;
             width: 52px; height: 52px; background-color: var(--wa); color: white;
@@ -436,7 +425,6 @@
         .fab svg { width: 26px; height: 26px; fill: white; }
         .fab:active { transform: scale(0.94); }
 
-        /* --- BACK TO TOP --- */
         .back-to-top {
             position: fixed; bottom: 84px; left: 18px;
             width: 42px; height: 42px; background-color: var(--accent-color); color: white;
@@ -448,7 +436,6 @@
         }
         .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 
-        /* --- BOTTOM NAV --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background-color: var(--nav-bg); border-top: 1px solid var(--border-color);
@@ -486,7 +473,6 @@
             border-radius: 50%; border: 2px solid var(--nav-bg);
         }
 
-        /* --- ERROR --- */
         .error-feed { text-align: center; padding: 40px 20px; color: var(--text-muted); }
         .error-feed button {
             margin-top: 12px; background-color: var(--accent-color); color: white;
@@ -495,7 +481,6 @@
         }
         .text-muted { color: var(--text-muted); font-size: 0.85rem; }
 
-        /* --- LIGHTBOX --- */
         .lightbox {
             display: none; position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.95); z-index: 9999;
@@ -521,7 +506,6 @@
             border-radius: 20px; max-width: 90%; text-align: center;
         }
 
-        /* --- OFFLINE BANNER --- */
         .offline-banner {
             position: fixed; top: 0; left: 0; right: 0;
             background-color: #ff9800; color: white; text-align: center;
@@ -532,7 +516,6 @@
         }
         .offline-banner.visible { transform: translateY(0); }
 
-        /* --- CACHE INFO --- */
         .cache-info {
             text-align: center; font-size: 0.7rem;
             color: var(--text-muted); margin-bottom: 10px; display: none;
@@ -573,7 +556,6 @@
     </header>
 
     <main>
-        <!-- UPDATES -->
         <section id="updates" class="view active">
             <div class="search-wrap" id="searchWrap">
                 <span class="search-icon">🔍</span>
@@ -584,7 +566,6 @@
             <div id="feedContainer"></div>
         </section>
 
-        <!-- PAYMENTS -->
         <section id="payments" class="view">
             <div class="card">
                 <h3 data-i18n="paymentsTitle">💳 School Fees Payment</h3>
@@ -608,7 +589,6 @@
             </div>
         </section>
 
-        <!-- EVENTS -->
         <section id="events" class="view">
             <div class="sub-nav">
                 <button class="sub-nav-item active" onclick="switchSubTab('hairstyles', this)">Hairstyles</button>
@@ -671,7 +651,6 @@
             </div>
         </section>
 
-        <!-- ABOUT -->
         <section id="about" class="view">
             <div class="card">
                 <img src="https://dl.dropboxusercontent.com/scl/fi/rdej9enx2pnsktjjuviv4/1790280398985.jpg?rlkey=12t90yeb0o50yqfz5ndqomxz3&st=59kxo5d7&dl=1" 
@@ -691,7 +670,6 @@
             </div>
         </section>
 
-        <!-- CONTACT -->
         <section id="contact" class="view">
             <div class="card">
                 <h3 data-i18n="contactTitle">📞 Contact Admissions</h3>
@@ -749,7 +727,7 @@ const CONFIG = {
     schoolName: 'F AND TRIPLE D ACADEMY',
     whatsappNumber: '2348027093798',
     schoolLogo: 'https://dl.dropboxusercontent.com/scl/fi/rdej9enx2pnsktjjuviv4/1790280398985.jpg?rlkey=12t90yeb0o50yqfz5ndqomxz3&st=59kxo5d7&dl=1',
-    apiUrl: 'https://script.google.com/macros/s/AKfycbyKT3hPqkX-A0VSs7UMehi5wwAXyUtH3GvC-A4fe5Z8Dn8XVfd8Ra7fH3I9QcdE8YUoEw/exec',
+    apiUrl: 'https://script.google.com/macros/s/AKfycbyfHevn3f_zqBqWsgn73szoyjvPYRiTxDD5y23XFd-jzAOU-WdEn8iGcTqhMcxwMeSZyg/exec',
     enablePullToRefresh: true,
     enablePushNotifications: true,
     enablePostForm: false
